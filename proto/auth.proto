@@ -8,6 +8,7 @@ service AuthService {
     rpc Validate (ValidateRequest) returns (ValidateResponse) {}
     rpc Edit (EditRequest) returns (EditResponse) {}
     rpc Remove (RemoveRequest) returns (RemoveResponse) {}
+    rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
 }
 
 // Register
@@ -69,4 +70,24 @@ message RemoveRequest {
 message RemoveResponse {
     int32 status = 1;
     repeated string error = 2;
+}
+
+// GetUser
+
+message GetUserRequest {
+    int32 userId = 1;
+}
+
+message GetUserResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    User user = 3;
+}
+
+// User message
+
+message User {
+    int32 id = 1;
+    string email = 2;
+    string role = 3;
 }
